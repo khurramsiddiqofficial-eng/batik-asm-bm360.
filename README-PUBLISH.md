@@ -28,3 +28,7 @@
 - Duplicate destination hours are blocked; existing sales values trigger an overwrite confirmation.
 - OCR output remains a suggestion. Compare each figure with the source screenshot before applying.
 - Test with one known screenshot per reporting line before using for live reporting.
+
+
+## v9 manual sales screenshot entry
+The hourly sales screenshot reader now does not run OCR. It displays each selected image in a scrollable preview and provides blank editable hour/value rows. Select the branch, read the screenshot, enter values manually, and apply only verified values. Empty rows are skipped. Closing-report OCR remains unchanged.
