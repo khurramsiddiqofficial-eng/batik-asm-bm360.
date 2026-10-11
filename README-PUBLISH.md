@@ -1,34 +1,22 @@
-# BATIK ASM & BM 360° — Formula and Report Quality Update
+# BATIK ASM & BM 360° — v10 Mobile Manual Entry
 
-## Included
-- Existing sales screenshot reader and closing screenshot reader retained.
-- PNG reports restyled with a navy header, gold divider, readable table headers, alternating row shading, stronger total row, and generated timestamp/footer.
-- BM 360° score inputs start at zero to avoid accidentally presenting a perfect score before assessment.
-- Closing report labels positive variance as Deficit and negative variance as Access.
-- Closing save checks date/day-count validity and warns before saving when daily sale does not equal cash plus card.
+## What's improved
+- Hourly sales screenshot reader is fully manual. Each hour has a large, labeled amount field in a mobile-friendly two-column layout; no hour dropdowns or OCR guesses.
+- Screenshot preview remains visible above the entry fields, with an option to open it full-screen.
+- Closing report now uses the same manual workflow: select closing screenshots, inspect each image, choose the outlet, enter only the figures visible, and apply them to that outlet.
+- Closing fields cover daily total sale, cash, card, cash in hand, units sold, units in hand, invoices, MTD achieved, monthly target, target quantity and MTD units achieved.
+- Existing values trigger a replacement confirmation. Blank fields are not applied. The app still requires users to verify calculations and save the closing report separately.
+- Service-worker cache name updated to v10.
 
 ## Publish
-1. Export a JSON backup from the currently installed app.
+1. Export a JSON backup from the existing app (History & backup).
 2. Extract this ZIP.
-3. Upload the contents of `BATIK_ASM_BM360_PWA_v6_Formula_Report_Audit` to the repository root, replacing existing files.
+3. Upload the **contents** of the `BATIK_ASM_BM360_PWA_v10_Mobile_Manual_Entry` folder to the root of the existing GitHub repository, replacing prior files.
 4. Commit to `main` and wait for GitHub Pages deployment.
-5. Reopen/refresh the installed PWA and test with sample records before live use.
+5. Reopen/refresh the installed PWA. If it shows the old version, close it fully and reopen after deployment.
 
-## Formula notes / limitations
-- Sales checkpoint grouping is configured as 12 PM + 1 PM + 2 PM; 3 PM + 4 PM; 5 PM + 6 PM; 7 PM + 8 PM. This assumes each entered column is sales for that hour only.
-- Closing forecast uses MTD achieved / elapsed days * days in month. Desired performance uses monthly target * elapsed days / days in month. Remaining target is monthly target - MTD achieved. Required daily average uses remaining target / remaining calendar days.
-- Screenshot OCR is best-effort; values must be reviewed against the screenshot. The OCR reader is not reliable enough to auto-approve financial values.
-- Local tests performed: JavaScript syntax check passed. This package has not been validated on the live site or every Android device. Test formulas and PNGs after deployment before using official reports.
-
-
-## v8 OCR safety changes
-- Hourly OCR no longer guesses values from the final lines of recognized text.
-- If a unique, explicit nine-cell hourly total row is not detected, all hourly suggestions remain blank.
-- Branch must be manually confirmed for every screenshot before applying.
-- Duplicate destination hours are blocked; existing sales values trigger an overwrite confirmation.
-- OCR output remains a suggestion. Compare each figure with the source screenshot before applying.
-- Test with one known screenshot per reporting line before using for live reporting.
-
-
-## v9 manual sales screenshot entry
-The hourly sales screenshot reader now does not run OCR. It displays each selected image in a scrollable preview and provides blank editable hour/value rows. Select the branch, read the screenshot, enter values manually, and apply only verified values. Empty rows are skipped. Closing-report OCR remains unchanged.
+## Notes
+- The app stores data locally on each device. Export backups regularly; desktop and phone data do not automatically sync.
+- Screenshot images are used only as visual references in the browser; no OCR runs in either manual reader.
+- Review outlet selection and figures before applying. Review totals and cash + card reconciliation before saving a closing report.
+- JavaScript syntax was checked with Node. Browser and Android interaction testing still needs to be performed on the deployed app.
