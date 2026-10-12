@@ -20,3 +20,12 @@
 - Screenshot images are used only as visual references in the browser; no OCR runs in either manual reader.
 - Review outlet selection and figures before applying. Review totals and cash + card reconciliation before saving a closing report.
 - JavaScript syntax was checked with Node. Browser and Android interaction testing still needs to be performed on the deployed app.
+
+
+## v11 — Excel closing workbook + BM 360 customer reviews
+- Closing tab: import the North Zone Excel workbook (`All Store` and `Central` sheets) to load daily sales, units, MTD achieved and targets for the selected date.
+- Manual fields not present in the workbook (cash, card, cash in hand, stock and invoices) remain blank for manual entry; always verify imported values before saving.
+- Export updated workbook to write app-entered daily values back into `All Store`, update `Central` forecast formulas using the actual month length, and add `App Closing Report` and `App BM360` sheets.
+- BM 360: review target and reviews received fields; review score is calculated automatically out of 5, and Customer Experience/Complaints is separately scored out of 5, preserving 100 total points.
+- Excel import/export uses the SheetJS library from a CDN, so an internet connection is needed when the app first loads the library. Existing manual entry and PNG report features remain available.
+- Before deployment: export an app JSON backup. Upload the ZIP contents to the GitHub Pages repository root, replace existing files, commit, then reopen the installed PWA after deployment.
