@@ -28,3 +28,11 @@
 - Download updated Excel to write every saved date into All Store, update row/column totals, and refresh Central formulas. Open the exported workbook in Excel so formulas recalculate.
 - Closing report preview has been cleaned: the generic “Generated from entered data / verify figures” text has been removed.
 - App data is still local to the device; export a JSON backup before replacing deployed files. The imported workbook template is held in memory for the current session, so import the workbook again after reopening the app before exporting.
+
+
+## v13 closing screenshot reader
+- Upload standard BATIK closing screenshots in Closing report. OCR reads branch code, date, Units Sold, and Total Sale only.
+- Every OCR result is editable and must be confirmed before it is saved. Never rely on an unreviewed OCR result.
+- Confirmed figures save to local device data by branch and date. Other dates/branches are preserved.
+- Daily closing quantity/sale inputs auto-save while editing. The app remembers the last open tab on the same device/browser.
+- Tesseract.js and XLSX libraries load from their CDNs, so OCR/workbook features require an internet connection.
